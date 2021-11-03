@@ -5,10 +5,10 @@ using namespace std;
 
 // } Driver Code Ends
 
-long long  numberOfPaths(int m, int n) {
+int  numberOfPaths(int m, int n) {
 	// Code Here
 
-	//long long res;
+	//int res;
 
 	//invalid
 	if (m < 0 || n < 0) {
@@ -22,10 +22,10 @@ long long  numberOfPaths(int m, int n) {
 
 
 	//down
-	long long d_path = numberOfPaths(m - 1, n);
+	int d_path = numberOfPaths(m - 1, n);
 
 	//right
-	long long r_path = numberOfPaths(m, n - 1);
+	int r_path = numberOfPaths(m, n - 1);
 
 	return d_path + r_path ;
 

@@ -2,10 +2,10 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-#define ll long long
+#define ll int
 
 // } Driver Code Ends
-// #define ll long long
+// #define ll int
 class Solution {
 public:
     vector<ll> nthRowOfPascalTriangle(int n) {

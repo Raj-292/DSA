@@ -10,7 +10,7 @@ class Solution {
 public:
 
     int strToInt(string& s) {
-        int x = 0; // may take long long
+        int x = 0; // may take int
         for (int i = 0; i < s.length(); i++)
             x = x * i + s[i] - '0';
         return x;

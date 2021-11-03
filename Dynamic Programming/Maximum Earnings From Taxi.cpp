@@ -4,7 +4,7 @@
 
 class Solution {
 public:
-	long long maxTaxiEarnings(int n, vector<vector<int>>& rides) {
+	int maxTaxiEarnings(int n, vector<vector<int>>& rides) {
 
 		// Sort acc. to end times, if overlap, select one
 
@@ -12,7 +12,7 @@ public:
 			return a[1] < b[1];
 		});
 
-		long long maxEarnings = 0;
+		int maxEarnings = 0;
 
 		vector<int> prev = rides[0];
 
@@ -42,7 +42,7 @@ public:
 class Solution {
 public:
 
-	long long helper(int& n, unordered_map<int, vector<int>>& mp, vector<long long>& dp, int pickUpPoint) {
+	int helper(int& n, unordered_map<int, vector<int>>& mp, vector<int>& dp, int pickUpPoint) {
 
 		// Base Case.
 		if (pickUpPoint >= n)
@@ -56,14 +56,14 @@ public:
 
 		// Recursive
 		// Take
-		long long take = mp[pickUpPoint][1] - mp[pickUpPoint][0] + mp[pickUpPoint][2] + helper(n, mp, dp, mp[pickUpPoint][1]);
+		int take = mp[pickUpPoint][1] - mp[pickUpPoint][0] + mp[pickUpPoint][2] + helper(n, mp, dp, mp[pickUpPoint][1]);
 		// Not Take
-		long long notTake = helper(n, mp, dp, pickUpPoint + 1);
+		int notTake = helper(n, mp, dp, pickUpPoint + 1);
 
 		return dp[pickUpPoint] = max(take, notTake);
 	}
 
-	long long maxTaxiEarnings(int n, vector<vector<int>>& rides) {
+	int maxTaxiEarnings(int n, vector<vector<int>>& rides) {
 
 		// mapping start point
 		unordered_map<int, vector<int>> mp;
@@ -73,7 +73,7 @@ public:
 		}
 
 		// Dp
-		vector<long long> dp(100001, -1);
+		vector<int> dp(100001, -1);
 
 		return helper(n, mp, dp, 0);
 	}

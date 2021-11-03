@@ -2,7 +2,7 @@
 
 using namespace std;
 
-#define ll long long
+#define ll int
 
 
 void bfs(vector<vector<int>>& adjMat, vector<bool>& visited) {

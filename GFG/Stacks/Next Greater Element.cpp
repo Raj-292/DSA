@@ -14,14 +14,14 @@ class Solution
 public:
     //Function to find the next greater element for each element of the array.
 
-    vector<long long> helper(vector<long long>& arr, int& n) {
+    vector<int> helper(vector<int>& arr, int& n) {
 
-        vector<long long> res(n, -1);
+        vector<int> res(n, -1);
 
-        stack<long long> st;
+        stack<int> st;
         st.push(arr[n - 1]);
 
-        for (long long i = n - 2 ; i >= 0 ; i--) {
+        for (int i = n - 2 ; i >= 0 ; i--) {
             while ( !st.empty() && arr[i] > st.top()) {
                 st.pop();
             }
@@ -39,7 +39,7 @@ public:
 
     }
 
-    vector<long long> nextLargerElement(vector<long long> arr, int n) {
+    vector<int> nextLargerElement(vector<int> arr, int n) {
         // Your code here
         return helper(arr, n);
     }
@@ -56,13 +56,13 @@ int main()
 
         int n;
         cin >> n;
-        vector<long long> arr(n);
+        vector<int> arr(n);
         for (int i = 0; i < n; i++)
             cin >> arr[i];
 
         Solution obj;
-        vector <long long> res = obj.nextLargerElement(arr, n);
-        for (long long i : res) cout << i << " ";
+        vector <int> res = obj.nextLargerElement(arr, n);
+        for (int i : res) cout << i << " ";
         cout << endl;
     }
     return 0;
