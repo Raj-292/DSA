@@ -91,3 +91,62 @@ int main()
 }
 
 // } Driver Code Ends
+
+/*
+	Using priority queue
+*/
+
+class Solution
+{
+private:
+
+	struct custom_cmp {
+
+		bool operator()(pair<int, int> x, pair<int, int> y) {
+			return x.second > y.second; // Priority based on edge weight
+		}
+
+	};
+
+public:
+	//Function to find the shortest distance of all the vertices
+	//from the source vertex S.
+	vector <int> dijkstra(int V, vector<vector<int>> adj[], int S) {
+
+		// Constructing distance vector
+		vector<int> distance(V, INT_MAX);
+
+		// Visited vector
+		vector<bool> visited(V, false);
+
+		// Constructing a priority queue.
+		priority_queue<pair<int, int>, vector<pair<int, int>>, custom_cmp> pq;
+
+		// Pushing the source node into the priority queue
+		pq.push({S, 0});
+
+		while (!pq.empty()) {
+			pair<int, int> frontP = pq.top();
+			pq.pop();
+
+			if (visited[frontP.first])
+				continue;
+
+			visited[frontP.first] = true;
+
+			distance[frontP.first] = frontP.second;
+
+			// Visit the neighbours of frontP and reduce their distance
+
+			for (const vector<int>& nbr : adj[frontP.first]) {
+				pq.push({nbr[0], nbr[1] + frontP.second});
+			}
+
+		}
+		return distance;
+	}
+};
+
+/*
+	In above approach, greater<pair<int,int>> can be used in place of custom_cmp and pair<int,int> can be modified such that weight is first and node is second.
+*/
